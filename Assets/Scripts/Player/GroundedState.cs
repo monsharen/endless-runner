@@ -47,7 +47,7 @@ namespace Player
                 return;
             }
 
-            if (Input.GetKeyDown("space"))
+            if (Input.GetButtonDown("Jump"))
             {
                 _effectManager.PlayLandingEffect();
                 _playerStateMachine.TransitionTo(PlayerStateId.FirstJumping);

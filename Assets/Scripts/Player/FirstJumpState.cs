@@ -18,7 +18,7 @@ namespace Player
                 return;
             }
             
-            if (Input.GetKeyUp("space") || Velocity < 0)
+            if (Input.GetButtonUp("Jump") || Velocity < 0)
             {
                 PlayerStateMachine.TransitionTo(PlayerStateId.FirstFalling);
                 JumpingInProgress = false;

@@ -20,7 +20,7 @@ namespace Player
                 return;
             }
 
-            if (Input.GetKeyDown("space"))
+            if (Input.GetButtonDown("Jump"))
             {
                 PlayerStateMachine.TransitionTo(PlayerStateId.DashDown);
             }
