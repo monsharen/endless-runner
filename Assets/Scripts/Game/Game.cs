@@ -27,7 +27,8 @@ namespace Game
             _gameStateMachine = new GameStateMachine();
             _gameStateMachine.GameStates.Add(GameStateId.Dead, new EmptyState());
             _gameStateMachine.GameStates.Add(GameStateId.Paused, new EmptyState());
-            _gameStateMachine.GameStates.Add(GameStateId.GameOver, new GameOverState(_gameStateMachine, effectManager));
+            _gameStateMachine.GameStates.Add(GameStateId.GameOver, new GameOverState(
+                _gameStateMachine, effectManager, gameSession));
             _gameStateMachine.GameStates.Add(GameStateId.Playing, 
                 new PlayingState(
                     _gameStateMachine, 
@@ -39,7 +40,8 @@ namespace Game
                     deathY,
                     effectManager,
                     gameSession));
-            _gameStateMachine.GameStates.Add(GameStateId.StartNewGame, new StartNewGameState(_gameStateMachine, gameSession));
+            _gameStateMachine.GameStates.Add(GameStateId.StartNewGame, new StartNewGameState(
+                _gameStateMachine, gameSession));
             _gameStateMachine.TransitionTo(GameStateId.StartNewGame);
         }
 

@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Effects;
+using Unity.Services.Analytics;
 using UnityEngine;
 
 namespace Game
@@ -10,11 +12,13 @@ namespace Game
         private readonly EffectManager _effectManager;
         private float _waitTimeSeconds;
         private bool _triggered;
+        private GameSession _gameSession;
 
-        public GameOverState(GameStateMachine gameStateMachine, EffectManager effectManager)
+        public GameOverState(GameStateMachine gameStateMachine, EffectManager effectManager, GameSession gameSession)
         {
             _gameStateMachine = gameStateMachine;
             _effectManager = effectManager;
+            _gameSession = gameSession;
         }
 
         public void Start()
@@ -23,7 +27,12 @@ namespace Game
             _waitTimeSeconds = 3.0f;
             _effectManager.PlayDieEffect();
             
+            Dictionary<string, object> parameters = new Dictionary<string, object>()
+            {
+                { "level", _gameSession.Level }
+            };
             
+            AnalyticsService.Instance.CustomData("playerDeadLevel", parameters); 
         }
 
         public void Update()

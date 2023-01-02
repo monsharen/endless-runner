@@ -8,7 +8,7 @@ namespace Game
     public class PlayingState : IGameState
     {
         private const float InitialPlayerSpeed = 10f;
-        private const float SpeedIncreasePerLevel = 1.5f;
+        private const float SpeedIncreasePerLevel = 2f;
 
         private readonly GameStateMachine _gameStateMachine;
         private PlayerStateMachine _playerStateMachine;
