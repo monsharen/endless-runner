@@ -33,7 +33,7 @@ namespace Player
         {
             if (!_playerCollisionDetection.IsGrounded(_player.transform.position, _groundY))
             {
-                _playerStateMachine.TransitionTo(PlayerStateId.SecondFalling);
+                _playerStateMachine.TransitionTo(PlayerStateId.FallingOffPlatform);
             }
         }
 

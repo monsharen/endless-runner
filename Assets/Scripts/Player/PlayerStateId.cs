@@ -8,6 +8,7 @@ namespace Player
         FirstFalling,
         SecondFalling,
         DashDown,
+        FallingOffPlatform,
         Dead
     }
 }

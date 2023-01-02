@@ -97,6 +97,8 @@ namespace Game
                 playerCollisionDetection, _playerYGameObject, _playerStateMachine, _gravity, _deathY, _effectManager));
             _playerStateMachine.PlayerStates.Add(PlayerStateId.Dead, new DeadState(
                 _gameStateMachine));
+            _playerStateMachine.PlayerStates.Add(PlayerStateId.FallingOffPlatform, new FallingOffPlatformState(
+                playerCollisionDetection, _playerYGameObject, _playerStateMachine, _gravity, _deathY, _effectManager));
             _playerStateMachine.PlayerStates.Add(PlayerStateId.DashDown, new DashDownState(
                 playerCollisionDetection, _playerYGameObject, _playerStateMachine, _gravity, _deathY, _effectManager));
             

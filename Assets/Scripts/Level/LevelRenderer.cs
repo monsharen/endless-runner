@@ -15,18 +15,24 @@ public class LevelRenderer
 
     public void Render(Level.Level level, int startX)
     {
-        var queue = level.GetAll();
-
-        int count = -1;
-        
-        foreach (int height in queue)
+        int count = 0;
+        foreach (var platform in level.GetAllPlatforms())
         {
-            count++;
-            if (height < 0)
+            if (platform.Height >= 0)
             {
-                continue;
+                float platformStartX = (count + startX) - 1;
+                RenderPlatform(platformStartX, platform.Length, platform.Height);
             }
-            int posX = count + startX;
+            
+            count += platform.Length;
+        }
+    }
+
+    private void RenderPlatform(float platformStartX, int length, int height)
+    {
+        for (int i = 1; i < length; i++)
+        {
+            float posX = i + platformStartX;
             var gameObject = Object.Instantiate(_platformPrefab, new Vector3(posX + platformSizeAdjustment, height, 0), Quaternion.identity);
             gameObject.transform.parent = _parentNode.transform;
         }

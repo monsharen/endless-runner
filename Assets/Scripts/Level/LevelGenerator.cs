@@ -1,4 +1,5 @@
 
+using Level;
 using UnityEngine;
 
 public class LevelGenerator
@@ -30,9 +31,7 @@ public class LevelGenerator
 
     private static void GeneratePlatform(int length, int height, Level.Level level)
     {
-        for (int x = 0; x < length; x++)
-        {
-            level.Add(height);
-        }
+        var platform = new Platform(height, length);
+        level.Add(platform);
     }
 }

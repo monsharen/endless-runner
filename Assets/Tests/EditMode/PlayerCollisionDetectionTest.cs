@@ -1,4 +1,5 @@
 using CollisionDetection;
+using Level;
 using NUnit.Framework;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ namespace Tests.EditMode
         public void PlayerCollisionDetectionTestSimple()
         {
             Level.Level level = new Level.Level();
-            level.Add(0);
+            level.Add(new Platform(0, 1));
             var playerCollisionDetection = new PlayerCollisionDetection(level);
             var isGrounded = playerCollisionDetection.IsGrounded(new Vector3(0, 0, 0), 0);
             Assert.IsTrue(isGrounded);
@@ -21,7 +22,7 @@ namespace Tests.EditMode
         public void ShouldReturnTrueWhenPlayerWasAboveLastFrameAndNowIsBelow()
         {
             Level.Level level = new Level.Level();
-            level.Add(0);
+            level.Add(new Platform(0, 1));
             var playerCollisionDetection = new PlayerCollisionDetection(level);
             var isGrounded = playerCollisionDetection.IsGrounded(new Vector3(0, -1, 0), 1);
             Assert.IsTrue(isGrounded);
