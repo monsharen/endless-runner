@@ -22,6 +22,8 @@ namespace Game
             _triggered = false;
             _waitTimeSeconds = 3.0f;
             _effectManager.PlayDieEffect();
+            
+            
         }
 
         public void Update()
