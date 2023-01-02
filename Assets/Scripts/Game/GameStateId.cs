@@ -5,6 +5,7 @@ namespace Game
         Playing,
         Dead,
         StartNewGame,
+        GameOver,
         Paused
     }
 }

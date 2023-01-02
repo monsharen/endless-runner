@@ -12,8 +12,7 @@ namespace Player
         public void TransitionTo(PlayerStateId playerStateId)
         {
             _transitionToState = PlayerStates[playerStateId];
-            
-            //Debug.Log("transition to " + playerStateId);
+
         }
 
         public void Update()

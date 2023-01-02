@@ -5,9 +5,9 @@ namespace CollisionDetection
     public class PlayerCollisionDetection : IPlayerCollisionDetection
     {
 
-        private readonly Level _level;
+        private readonly Level.Level _level;
 
-        public PlayerCollisionDetection(Level level)
+        public PlayerCollisionDetection(Level.Level level)
         {
             _level = level;
         }
@@ -17,7 +17,9 @@ namespace CollisionDetection
             // Ground is not negative this frame
             // Above ground previous frame and Under Ground this frame
             var playerX = UnitConverter.EngineXToLevelX(transformPosition.x);
-            var levelHeightThisFrame = _level.GetHeightAt(playerX);
+            var clampedPlayerX = Mathf.Clamp(playerX, 0, _level.GetLength());
+            
+            var levelHeightThisFrame = _level.GetHeightAt(clampedPlayerX);
 
             if (levelHeightThisFrame < 0) // Can't be grounded. Platform does not exist here
             {

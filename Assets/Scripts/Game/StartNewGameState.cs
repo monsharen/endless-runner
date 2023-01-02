@@ -6,15 +6,17 @@ namespace Game
     {
 
         private GameStateMachine _gameStateMachine;
+        private GameSession _gameSession;
 
-        public StartNewGameState(GameStateMachine gameStateMachine)
+        public StartNewGameState(GameStateMachine gameStateMachine, GameSession gameSession)
         {
             _gameStateMachine = gameStateMachine;
+            _gameSession = gameSession;
         }
 
         public void Start()
         {
-            //_level = LevelGenerator.Generate(8, 20, 4);
+            _gameSession.StartNewSession();
         }
 
         public void Update()
@@ -29,7 +31,7 @@ namespace Game
 
         public void End()
         {
-            Debug.Log("StartNewGameState going to next state");            
+                   
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Tests.EditMode
         [Test]
         public void PlayerCollisionDetectionTestSimple()
         {
-            Level level = new Level();
+            Level.Level level = new Level.Level();
             level.Add(0);
             var playerCollisionDetection = new PlayerCollisionDetection(level);
             var isGrounded = playerCollisionDetection.IsGrounded(new Vector3(0, 0, 0), 0);
@@ -20,7 +20,7 @@ namespace Tests.EditMode
         [Test]
         public void ShouldReturnTrueWhenPlayerWasAboveLastFrameAndNowIsBelow()
         {
-            Level level = new Level();
+            Level.Level level = new Level.Level();
             level.Add(0);
             var playerCollisionDetection = new PlayerCollisionDetection(level);
             var isGrounded = playerCollisionDetection.IsGrounded(new Vector3(0, -1, 0), 1);

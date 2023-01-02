@@ -19,7 +19,7 @@ namespace Player
 
         public void Update()
         {
-            _gameStateMachine.TransitionTo(GameStateId.Playing);
+            _gameStateMachine.TransitionTo(GameStateId.GameOver);
         }
 
         public void FixedUpdate()

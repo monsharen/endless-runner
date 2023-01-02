@@ -13,7 +13,7 @@ namespace Game
         {
             _transitionToState = GameStates[stateId];
             
-            Debug.Log("transition to game state " + stateId);
+            //Debug.Log("transition to game state " + stateId);
         }
 
         public void Update()

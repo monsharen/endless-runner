@@ -27,6 +27,11 @@ namespace Effects
             _game.StartCoroutine(ShakeCamera(0.1f, 0.3f));
         }
 
+        public void PlayDieEffect()
+        {
+            _game.StartCoroutine(ShakeCamera(1f, 0.3f));
+        }
+
         public IEnumerator ShakeCamera(float duration, float magnitude)
         {
             var cameraTransform = _camera.transform;

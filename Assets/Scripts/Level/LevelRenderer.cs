@@ -13,7 +13,7 @@ public class LevelRenderer
         _parentNode = parentNode;
     }
 
-    public void Render(Level level, int startX)
+    public void Render(Level.Level level, int startX)
     {
         var queue = level.GetAll();
 
