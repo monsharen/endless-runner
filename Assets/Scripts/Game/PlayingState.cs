@@ -8,7 +8,7 @@ namespace Game
     public class PlayingState : IGameState
     {
         private const float InitialPlayerSpeed = 10f;
-        private const float SpeedIncreasePerLevel = 2f;
+        private const float SpeedIncreasePerLevel = 1.1f;
 
         private readonly GameStateMachine _gameStateMachine;
         private PlayerStateMachine _playerStateMachine;
@@ -41,6 +41,10 @@ namespace Game
 
         public void Start()
         {
+            SetLevelBackground();
+            
+            SetPlayerSpeed();
+            
             ResetLevel();
             
             _playerStateMachine.TransitionTo(PlayerStateId.Grounded);
@@ -76,12 +80,28 @@ namespace Game
             _gameStateMachine.TransitionTo(GameStateId.Playing);
         }
 
+        private void SetPlayerSpeed()
+        {
+            if (_gameSession.Level == 1)
+            {
+                _currentPlayerSpeed = InitialPlayerSpeed;
+            }
+            else
+            {
+                _currentPlayerSpeed *= SpeedIncreasePerLevel;
+            }
+        }
+
+        private void SetLevelBackground()
+        {
+            _effectManager.SetBackgroundColor(_gameSession);
+        }
+
         private void ResetLevel()
         {
             _player.transform.position = new Vector3();
             _level = LevelGenerator.Generate(4, 20, 4);
-            _currentPlayerSpeed = InitialPlayerSpeed;
-            
+
             var playerCollisionDetection = new PlayerCollisionDetection(_level);
             
             _playerStateMachine = new PlayerStateMachine();
@@ -109,13 +129,8 @@ namespace Game
         private void MovePlayerX()
         {
             var transformPosition = _player.transform.position;
-            transformPosition += Vector3.right * (Time.deltaTime * GetCurrentSpeed());
+            transformPosition += Vector3.right * (Time.deltaTime * _currentPlayerSpeed);
             _player.transform.position = transformPosition;
-        }
-
-        private float GetCurrentSpeed()
-        {
-            return _currentPlayerSpeed;
         }
     }
 }

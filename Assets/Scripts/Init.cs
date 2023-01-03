@@ -14,7 +14,7 @@ public class Init : MonoBehaviour
             List<string> consentIdentifiers = await AnalyticsService.Instance.CheckForRequiredConsents();
             SceneManager.LoadScene("Level", LoadSceneMode.Single);
         }
-        catch (ConsentCheckException e)
+        catch (ConsentCheckException)
         {
             
         }

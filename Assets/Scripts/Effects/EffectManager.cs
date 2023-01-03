@@ -1,10 +1,24 @@
 using System.Collections;
+using System.Collections.Generic;
+using Game;
 using UnityEngine;
 
 namespace Effects
 {
     public class EffectManager
     {
+        private static readonly List<Color32> BackgroundColors = new List<Color32>()
+        {
+            new Color32(0, 180, 255, 255),
+            new Color32(0, 100, 255, 255),
+            new Color32(0, 50, 255, 255),
+            new Color32(0, 0, 255, 255),
+            new Color32(100, 0, 255, 255),
+            new Color32(150, 0, 255, 255),
+            new Color32(100, 0, 100, 255),
+        };
+
+
         private readonly ParticleSystem _landingParticleEffect;
         private readonly GameObject _camera;
         private MonoBehaviour _game;
@@ -14,6 +28,23 @@ namespace Effects
             _landingParticleEffect = landingParticleEffect;
             _camera = camera;
             _game = game;
+        }
+
+        public void SetBackgroundColor(GameSession gameSession)
+        {
+            if (gameSession.Level < BackgroundColors.Count)
+            { 
+                SetBackgroundColor(BackgroundColors[gameSession.Level-1]);
+            }
+            else
+            {
+                SetBackgroundColor(Color.black);
+            }
+        }
+
+        private void SetBackgroundColor(Color color)
+        {
+            Camera.main.backgroundColor = color;
         }
 
         public void PlayLandingEffect()
