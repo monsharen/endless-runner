@@ -120,7 +120,7 @@ namespace Game
             _playerStateMachine.PlayerStates.Add(PlayerStateId.FallingOffPlatform, new FallingOffPlatformState(
                 playerCollisionDetection, _playerYGameObject, _playerStateMachine, _gravity, _deathY, _effectManager));
             _playerStateMachine.PlayerStates.Add(PlayerStateId.DashDown, new DashDownState(
-                playerCollisionDetection, _playerYGameObject, _playerStateMachine, _gravity, _deathY, _effectManager));
+                _gameSession, playerCollisionDetection, _playerYGameObject, _playerStateMachine, _gravity, _deathY, _effectManager));
             
             _levelRenderer.DestroyAll();
             _levelRenderer.Render(_level, 0);

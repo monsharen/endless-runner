@@ -14,6 +14,8 @@ namespace Game
         public int Deaths { get; private set; }
         
         public int Coins { get; private set; }
+        
+        public int DashDowns { get; private set; }
 
         public GameSession(int level, UIManager uiManager)
         {
@@ -40,6 +42,13 @@ namespace Game
             Coins++;
             
             _uiManager.UpdateCoins(Coins);
+        }
+
+        public void CountDashDown()
+        {
+            DashDowns++;
+            
+            _uiManager.UpdateDashDowns(DashDowns);
         }
 
         public void NextLevel()

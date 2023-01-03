@@ -1,20 +1,26 @@
 using CollisionDetection;
 using Effects;
+using Game;
 using UnityEngine;
 
 namespace Player
 {
     public class DashDownState : FallingState
     {
+
+        private GameSession _gameSession;
         public DashDownState(
+            GameSession gameSession,
             IPlayerCollisionDetection playerCollisionDetection, GameObject player, 
             IPlayerStateMachine playerStateMachine, float gravity, int deathY, EffectManager effectManager) 
             : base(playerCollisionDetection, player, playerStateMachine, gravity, deathY, effectManager)
         {
+            _gameSession = gameSession;
         }
 
         public override void Start()
         {
+            _gameSession.CountDashDown();
             base.Start();
             _velocity = _gravity;
         }

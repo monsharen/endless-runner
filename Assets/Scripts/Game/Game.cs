@@ -20,12 +20,13 @@ namespace Game
         public TextMeshProUGUI uiDeaths;
         public TextMeshProUGUI uiCoins;
         public TextMeshProUGUI uiLevel;
+        public TextMeshProUGUI uiDashDownsLevel;
 
         private GameStateMachine _gameStateMachine;
 
         private void Start()
         {
-            var uiManager = new UIManager(uiJumps, uiDeaths, uiCoins, uiLevel);
+            var uiManager = new UIManager(uiJumps, uiDeaths, uiCoins, uiLevel, uiDashDownsLevel);
             var gameSession = new GameSession(1, uiManager);
 
             var levelRenderer = new LevelRenderer(platformPrefab, platformParentNode);
