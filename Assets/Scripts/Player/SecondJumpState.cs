@@ -1,12 +1,12 @@
+using Game;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Player
 {
     public class SecondJumpState : JumpState
     {
 
-        public SecondJumpState(PlayerStateMachine playerStateMachine, GameObject player, float velocity, float gravity) : base(playerStateMachine, player, velocity, gravity)
+        public SecondJumpState(GameSession gameSession, PlayerStateMachine playerStateMachine, GameObject player, float velocity, float gravity) : base(gameSession, playerStateMachine, player, velocity, gravity)
         {
         }
 

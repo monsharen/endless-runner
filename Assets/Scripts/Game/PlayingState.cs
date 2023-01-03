@@ -108,9 +108,9 @@ namespace Game
             _playerStateMachine.PlayerStates.Add(PlayerStateId.Grounded, new GroundedState(
                 _playerStateMachine, _level, _playerYGameObject, _effectManager, playerCollisionDetection));
             _playerStateMachine.PlayerStates.Add(PlayerStateId.FirstJumping, new FirstJumpState(
-                _playerStateMachine, _playerYGameObject, _jumpVelocity, _gravity));
+                _gameSession, _playerStateMachine, _playerYGameObject, _jumpVelocity, _gravity));
             _playerStateMachine.PlayerStates.Add(PlayerStateId.SecondJumping, new SecondJumpState(
-                _playerStateMachine, _playerYGameObject, _jumpVelocity, _gravity));
+                _gameSession, _playerStateMachine, _playerYGameObject, _jumpVelocity, _gravity));
             _playerStateMachine.PlayerStates.Add(PlayerStateId.FirstFalling, new FirstFallingState(
                 playerCollisionDetection, _playerYGameObject, _playerStateMachine, _gravity, _deathY, _effectManager));
             _playerStateMachine.PlayerStates.Add(PlayerStateId.SecondFalling, new SecondFallingState(

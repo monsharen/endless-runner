@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+using Game;
 using UnityEngine;
 
 namespace Player
@@ -6,8 +6,7 @@ namespace Player
     public class FirstJumpState : JumpState
     {
 
-        
-        public FirstJumpState(PlayerStateMachine playerStateMachine, GameObject player, float velocity, float gravity) : base(playerStateMachine, player, velocity, gravity)
+        public FirstJumpState(GameSession gameSession, PlayerStateMachine playerStateMachine, GameObject player, float velocity, float gravity) : base(gameSession, playerStateMachine, player, velocity, gravity)
         {
         }
 

@@ -1,4 +1,6 @@
 using Effects;
+using TMPro;
+using UI;
 using UnityEngine;
 
 namespace Game
@@ -14,12 +16,17 @@ namespace Game
         public float gravity;
         public float jumpVelocity;
         public int deathY;
+        public TextMeshProUGUI uiJumps;
+        public TextMeshProUGUI uiDeaths;
+        public TextMeshProUGUI uiCoins;
+        public TextMeshProUGUI uiLevel;
 
         private GameStateMachine _gameStateMachine;
 
         private void Start()
         {
-            var gameSession = new GameSession(1);
+            var uiManager = new UIManager(uiJumps, uiDeaths, uiCoins, uiLevel);
+            var gameSession = new GameSession(1, uiManager);
 
             var levelRenderer = new LevelRenderer(platformPrefab, platformParentNode);
             var effectManager = new EffectManager(landParticleSystem, Camera.main.gameObject, this);

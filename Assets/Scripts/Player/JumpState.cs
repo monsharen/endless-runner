@@ -1,3 +1,4 @@
+using Game;
 using UnityEngine;
 
 namespace Player
@@ -9,11 +10,13 @@ namespace Player
         private readonly float _startVelocity;
         private readonly float _gravity;
         protected bool JumpingInProgress;
+        private GameSession _gameSession;
 
         protected float Velocity;
 
-        protected JumpState(PlayerStateMachine playerStateMachine, GameObject player, float velocity, float gravity)
+        protected JumpState(GameSession gameSession, PlayerStateMachine playerStateMachine, GameObject player, float velocity, float gravity)
         {
+            _gameSession = gameSession;
             PlayerStateMachine = playerStateMachine;
             _player = player;
 
@@ -23,6 +26,7 @@ namespace Player
 
         public void Start()
         {
+            _gameSession.CountJump();
             JumpingInProgress = true;
             Velocity = _startVelocity;
         }
