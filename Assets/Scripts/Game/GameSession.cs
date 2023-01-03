@@ -45,8 +45,7 @@ namespace Game
         public void NextLevel()
         {
             Level++;
-            
-            _uiManager.UpdateLevel(Level);
+            _uiManager.UpdateLevel(Level-1);
         }
 
         public void StartNewSession()
@@ -55,7 +54,7 @@ namespace Game
             Coins = 0;
             NumberOfJumps = 0;
             
-            _uiManager.UpdateLevel(Level);
+            _uiManager.UpdateLevel(0);
             _uiManager.UpdateCoins(Coins);
             _uiManager.UpdateJumps(NumberOfJumps);
         }
