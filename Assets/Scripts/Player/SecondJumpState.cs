@@ -1,5 +1,6 @@
 using Game;
 using UnityEngine;
+using Util;
 
 namespace Player
 {
@@ -17,7 +18,7 @@ namespace Player
                 return;
             }
             
-            if (Input.GetButtonUp("Jump") || Velocity < 0)
+            if (InputUtil.JumpEnded() || Velocity < 0)
             {
                 PlayerStateMachine.TransitionTo(PlayerStateId.SecondFalling);
                 JumpingInProgress = false;

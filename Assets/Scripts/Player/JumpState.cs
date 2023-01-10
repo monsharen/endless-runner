@@ -10,7 +10,7 @@ namespace Player
         private readonly float _startVelocity;
         private readonly float _gravity;
         protected bool JumpingInProgress;
-        private GameSession _gameSession;
+        private readonly GameSession _gameSession;
 
         protected float Velocity;
 

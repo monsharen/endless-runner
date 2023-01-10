@@ -1,6 +1,7 @@
 using CollisionDetection;
 using Effects;
 using UnityEngine;
+using Util;
 
 namespace Player
 {
@@ -39,7 +40,7 @@ namespace Player
 
         public void Update()
         {
-            if (Input.GetButtonDown("Jump"))
+            if (InputUtil.JumpStarted())
             {
                 _effectManager.PlayLandingEffect();
                 _playerStateMachine.TransitionTo(PlayerStateId.FirstJumping);

@@ -1,6 +1,7 @@
 using CollisionDetection;
 using Effects;
 using UnityEngine;
+using Util;
 
 namespace Player
 {
@@ -20,9 +21,10 @@ namespace Player
                 return;
             }
 
-            if (Input.GetButtonDown("Jump"))
+            if (InputUtil.JumpStarted())
             {
                 PlayerStateMachine.TransitionTo(PlayerStateId.DashDown);
+                FallingInProgress = false;
             }
         }
     }
