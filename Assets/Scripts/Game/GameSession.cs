@@ -62,10 +62,12 @@ namespace Game
             Level = 1;
             Coins = 0;
             NumberOfJumps = 0;
+            DashDowns = 0;
             
             _uiManager.UpdateLevel(0);
             _uiManager.UpdateCoins(Coins);
             _uiManager.UpdateJumps(NumberOfJumps);
+            _uiManager.UpdateDashDowns(DashDowns);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Effects
         private static readonly List<Color32> BackgroundColors = new List<Color32>()
         {
             new Color32(0, 180, 255, 255),
-            new Color32(0, 100, 255, 255),
+            new Color32(0, 100, 200, 255),
             new Color32(0, 50, 255, 255),
             new Color32(0, 0, 255, 255),
             new Color32(100, 0, 255, 255),

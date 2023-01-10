@@ -40,31 +40,31 @@ namespace UI
         public void UpdateJumps(int i)
         {
             _jumps.text = "" + i;
-            _dashDowns.StartCoroutine(AnimateText(_jumps, _jumpStartPosition));
+            //_dashDowns.StartCoroutine(AnimateText(_jumps, _jumpStartPosition));
         }
         
         public void UpdateDeaths(int i)
         {
             _deaths.text = "" + i;
-            _dashDowns.StartCoroutine(AnimateText(_deaths, _deathStartPosition));
+            //_dashDowns.StartCoroutine(AnimateText(_deaths, _deathStartPosition));
         }
         
         public void UpdateCoins(int i)
         {
             _coins.text = "" + i;
-            _dashDowns.StartCoroutine(AnimateText(_coins, _coinsStartPosition));
+            //_dashDowns.StartCoroutine(AnimateText(_coins, _coinsStartPosition));
         }
         
         public void UpdateLevel(int i)
         {
             _level.text = "" + i;
-            _dashDowns.StartCoroutine(AnimateText(_level, _levelStartPosition));
+            //_dashDowns.StartCoroutine(AnimateText(_level, _levelStartPosition));
         }
         
         public void UpdateDashDowns(int i)
         {
             _dashDowns.text = "" + i;
-            _dashDowns.StartCoroutine(AnimateText(_dashDowns, _dashDownStartPosition));
+            //_dashDowns.StartCoroutine(AnimateText(_dashDowns, _dashDownStartPosition));
         }
 
         private void SetStartPositions()
