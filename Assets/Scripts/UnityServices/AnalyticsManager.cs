@@ -13,7 +13,6 @@ namespace UnityServices
         {
             try
             {
-                await Unity.Services.Core.UnityServices.InitializeAsync();
                 List<string> consentIdentifiers = await AnalyticsService.Instance.CheckForRequiredConsents();
 
                 Instance = new AnalyticsImpl();

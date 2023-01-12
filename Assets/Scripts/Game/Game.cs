@@ -21,12 +21,13 @@ namespace Game
         public TextMeshProUGUI uiCoins;
         public TextMeshProUGUI uiLevel;
         public TextMeshProUGUI uiDashDownsLevel;
+        public TextMeshProUGUI highscore;
 
         private GameStateMachine _gameStateMachine;
 
         private void Start()
         {
-            var uiManager = new UIManager(uiJumps, uiDeaths, uiCoins, uiLevel, uiDashDownsLevel);
+            var uiManager = new UIManager(uiJumps, uiDeaths, uiCoins, uiLevel, uiDashDownsLevel, highscore);
             var gameSession = new GameSession(1, uiManager);
 
             var levelRenderer = new LevelRenderer(platformPrefab, platformParentNode);
@@ -36,7 +37,7 @@ namespace Game
             _gameStateMachine.GameStates.Add(GameStateId.Dead, new EmptyState());
             _gameStateMachine.GameStates.Add(GameStateId.Paused, new EmptyState());
             _gameStateMachine.GameStates.Add(GameStateId.GameOver, new GameOverState(
-                _gameStateMachine, effectManager, gameSession));
+                _gameStateMachine, effectManager, gameSession, uiManager));
             _gameStateMachine.GameStates.Add(GameStateId.Playing, 
                 new PlayingState(
                     _gameStateMachine, 

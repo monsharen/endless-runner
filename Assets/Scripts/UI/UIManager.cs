@@ -15,6 +15,8 @@ namespace UI
         private readonly TextMeshProUGUI _level;
         private readonly TextMeshProUGUI _dashDowns;
 
+        private readonly TextMeshProUGUI _highscore;
+
         private Vector3 _jumpStartPosition;
         private Vector3 _deathStartPosition;
         private Vector3 _coinsStartPosition;
@@ -22,12 +24,14 @@ namespace UI
         private Vector3 _dashDownStartPosition;
 
         public UIManager(
+            TextMeshProUGUI highscore,
             TextMeshProUGUI jumps, 
             TextMeshProUGUI deaths, 
             TextMeshProUGUI coins, 
             TextMeshProUGUI level,
             TextMeshProUGUI dashDowns)
         {
+            _highscore = highscore;
             _jumps = jumps;
             _deaths = deaths;
             _coins = coins;
@@ -35,6 +39,24 @@ namespace UI
             _dashDowns = dashDowns;
 
             SetStartPositions();
+        }
+
+        public void ShowLatestHighscore()
+        {
+            //var top10 = LeaderboardsManager.Instance.GetTop10();
+            Debug.Log("showing highscore");
+            //_highscore.text = "";
+            /* foreach (var score in top10.Result)
+            {
+                _highscore.text += score.PlayerName + ": " + score.Score + "\n";
+            }*/
+            _highscore.transform.parent.gameObject.SetActive(true);
+        }
+
+        public void HideHighscore()
+        {
+            Debug.Log("hiding highscore");
+            _highscore.transform.parent.gameObject.SetActive(false);
         }
 
         public void UpdateJumps(int i)

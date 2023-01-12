@@ -1,4 +1,5 @@
 using Effects;
+using UI;
 using UnityEngine;
 using UnityServices;
 
@@ -12,18 +13,26 @@ namespace Game
         private float _waitTimeSeconds;
         private bool _triggered;
         private readonly GameSession _gameSession;
+        private readonly UIManager _uiManager;
 
-        public GameOverState(GameStateMachine gameStateMachine, EffectManager effectManager, GameSession gameSession)
+        public GameOverState(GameStateMachine gameStateMachine, EffectManager effectManager, GameSession gameSession, UIManager uiManager)
         {
             _gameStateMachine = gameStateMachine;
             _effectManager = effectManager;
             _gameSession = gameSession;
+            _uiManager = uiManager;
         }
 
         public void Start()
         {
             _gameSession.CountDeath();
             AnalyticsManager.Instance.SendPlayerDiedAtLevelEvent(_gameSession.Level);
+            if (AuthenticationManager.Instance.IsLoggedIn())
+            {
+                Debug.Log("adding highscore " + _gameSession.Level);
+                LeaderboardsManager.Instance.AddScore(_gameSession.Level);
+                _uiManager.ShowLatestHighscore();
+            }
             
             _triggered = false;
             _waitTimeSeconds = 3.0f;
@@ -52,7 +61,7 @@ namespace Game
 
         public void End()
         {
-            
+            _uiManager.HideHighscore();
         }
     }
 }
