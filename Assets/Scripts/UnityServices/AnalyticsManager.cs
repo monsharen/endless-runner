@@ -27,11 +27,18 @@ namespace UnityServices
 
     public interface IAnalytics
     {
+
+        public bool Initialised();
         public void SendPlayerDiedAtLevelEvent(int level);
     }
 
     class EmptyAnalytics : IAnalytics
     {
+        public bool Initialised()
+        {
+            return false;
+        }
+
         public void SendPlayerDiedAtLevelEvent(int level)
         {
         }
@@ -39,6 +46,11 @@ namespace UnityServices
 
     class AnalyticsImpl : IAnalytics
     {
+        public bool Initialised()
+        {
+            return true;
+        }
+
         public void SendPlayerDiedAtLevelEvent(int level)
         {
             Dictionary<string, object> parameters = new Dictionary<string, object>()

@@ -2,6 +2,7 @@ using Effects;
 using UI;
 using UnityEngine;
 using UnityServices;
+using Util;
 
 namespace Game
 {
@@ -31,7 +32,7 @@ namespace Game
             {
                 Debug.Log("adding highscore " + _gameSession.Level);
                 LeaderboardsManager.Instance.AddScore(_gameSession.Level);
-                _uiManager.ShowLatestHighscore();
+                Scenes.ChangeScene(SceneId.Leaderboard);
             }
             
             _triggered = false;

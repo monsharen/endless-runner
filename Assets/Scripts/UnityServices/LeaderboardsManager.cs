@@ -9,7 +9,7 @@ namespace UnityServices
     public class LeaderboardsManager
     {
         public static ILeaderboard Instance { get; private set; } = new EmptyLeaderboard();
-        public static async Task Start()
+        public static void Start()
         {
             try
             {
@@ -43,7 +43,7 @@ namespace UnityServices
 
         public Task<List<Highscore>> GetTop10()
         {
-            return null;
+            return Task.FromResult(new List<Highscore>());
         }
     }
 
@@ -68,7 +68,7 @@ namespace UnityServices
             var highscores = new List<Highscore>();
             foreach (var entry in scoresResponseResults)
             {
-                highscores.Add(new Highscore(entry.PlayerName, (int) entry.Score));
+                highscores.Add(new Highscore(entry.PlayerId, (int) entry.Score));
             }
             return highscores;
         }

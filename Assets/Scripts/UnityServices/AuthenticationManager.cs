@@ -27,7 +27,8 @@ namespace UnityServices
         {
             AuthenticationService.Instance.SignedIn += () =>
             {
-                Debug.Log("Signed in as: " + AuthenticationService.Instance.PlayerId);
+                Debug.Log($"Signed in as: {AuthenticationService.Instance.PlayerId}, " +
+                          $"{AuthenticationService.Instance.PlayerInfo.Id}");
                 Instance = new LoggedInImpl(AuthenticationService.Instance.PlayerId);
             };
             AuthenticationService.Instance.SignInFailed += s =>
