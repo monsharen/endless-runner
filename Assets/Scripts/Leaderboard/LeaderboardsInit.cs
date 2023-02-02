@@ -25,6 +25,8 @@ namespace Leaderboard
 
             var highscores = await LeaderboardsManager.Instance.GetTop10();
             Debug.Log(JsonConvert.SerializeObject(highscores));
+            
+            
         
             UpdateText(highscores);
             

@@ -11,6 +11,14 @@ namespace UnityServices
             return new Dictionary<string, string>();
         }
 
+        public static Dictionary<string, string> GetUserNames()
+        {
+            var arguments = new Dictionary<string, object> { { "name", "Unity" } };
+            //var response = await CloudCodeService.Instance.CallEndpointAsync<CloudCodeResponse>("hello-world", arguments);
+            
+            return new Dictionary<string, string>();
+        }
+
         public static void UpdateUserName(string playerName)
         {
 
@@ -29,6 +37,11 @@ namespace UnityServices
             var playerId = AuthenticationManager.Instance.GetPlayerId();
             
             Debug.Log($"updating name for player id '{playerId}' to '{playerName}'");
+        }
+        
+        class CloudCodeResponse
+        {
+            public string welcomeMessage;
         }
     }
 }
